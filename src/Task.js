@@ -5,7 +5,7 @@ class Task extends React.Component {
     return (
       <li>
         <i
-          className="fas fa-times"
+          className="fas fa-times click-icon"
           onClick={e => {
             this.props.delete(e);
           }}
@@ -19,6 +19,22 @@ class Task extends React.Component {
           {this.props.text}
         </span>
         <span className="quantity">{this.props.quantity}</span>
+        <span>
+          <i
+            className="fas fa-cookie-bite click-icon"
+            onClick={i => {
+              this.props.eat(i);
+            }}
+          />
+        </span>
+        <span
+          className="date"
+          onClick={e => {
+            this.props.displayDate(e);
+          }}
+        >
+          {this.props.date}
+        </span>
       </li>
     );
   }

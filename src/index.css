@@ -42,6 +42,20 @@ span {
   margin: 20px;
 }
 
+.hidden {
+  display: none;
+}
+
+.list-container {
+  width: 700px;
+  height: 300px;
+  text-align: center;
+}
+
+.empty-list {
+  font-size: 40px;
+}
+
 .quantity {
   font-weight: bold;
 }
@@ -67,6 +81,17 @@ span {
   border-radius: 10px;
   border: solid 2px #87cefa;
   padding: 10px;
+}
+
+.quantity-input {
+  width: 100px;
+  height: 45px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  border: solid 2px #87cefa;
+  padding: 10px;
+  margin-left: 20px;
 }
 
 .search-input {
@@ -102,21 +127,29 @@ button:hover {
   cursor: pointer;
 }
 
-.done {
-  text-decoration: line-through;
+.pinned {
+  color: yellow;
 }
 
-.done:hover,
-.undone:hover {
+.pinned:hover,
+.unpinned:hover {
   cursor: pointer;
 }
 
-.undone {
+.unpinned {
   text-decoration: none;
 }
 
-.hide-done {
+.hide-pinned {
   font-size: 12px;
+}
+
+.click-icon {
+  cursor: pointer;
+}
+
+.date {
+  font-size: 16px;
 }
 
 /* if transitions wanted
