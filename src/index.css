@@ -1,13 +1,139 @@
-body {
+html {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+  font-family: Arial;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
 }
+
+.container {
+  margin: auto;
+  width: 1024;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 0;
+}
+
+header {
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: space-around;
+}
+
+ul {
+  list-style: none;
+}
+
+div {
+  padding: 10px 0px;
+}
+
+li {
+  font-size: 30px;
+  line-height: 40px;
+}
+
+span {
+  margin: 20px;
+}
+
+.quantity {
+  font-weight: bold;
+}
+
+.count {
+  font-size: 18px;
+}
+
+.red-cross {
+  color: red;
+  padding-right: 5px;
+}
+
+.green-check {
+  color: #6ac259;
+  padding-right: 5px;
+}
+
+.do-input {
+  width: 800px;
+  height: 45px;
+  font-size: 30px;
+  border-radius: 10px;
+  border: solid 2px #6ac259;
+  padding: 10px;
+}
+
+.search-input {
+  width: 400px;
+  height: 35px;
+  font-size: 20px;
+  border-radius: 8px;
+  border: solid 2px #6ac259;
+  padding: 10px;
+  margin: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+select {
+  height: 45px;
+  font-size: 25px;
+  padding: 10px;
+}
+
+button {
+  font-size: 25px;
+  height: 35px;
+  background-color: #6ac259;
+  border-radius: 15px;
+  margin: 10px 10px;
+  color: #ffffff;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.done:hover,
+.undone:hover {
+  cursor: pointer;
+}
+
+.undone {
+  text-decoration: none;
+}
+
+.hide-done {
+  font-size: 12px;
+}
+
+/* if transitions wanted
+@keyframes transition {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+li {
+  opacity: 0;
+  animation: transition 0.3s ease-in 0.3s forwards;
+}
+
+.status {
+  opacity: 0;
+  animation: transition 0.3s ease-in 0.3s forwards;
+} */
