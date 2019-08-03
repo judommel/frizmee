@@ -39,7 +39,7 @@ class App extends React.Component {
   checkToDo = async index => {
     this.setState({ isLoading: true });
     await axios
-      .post("https://jdommel-to-do-list-server.herokuapp.com/update", {
+      .post("localhost:3001/update", {
         id: this.state.tasks[index]._id
       })
       .then(response => {
@@ -50,7 +50,7 @@ class App extends React.Component {
   addTaskandNumber = async () => {
     this.setState({ isLoading: true });
     await axios
-      .post("https://jdommel-to-do-list-server.herokuapp.com/create", {
+      .post("localhost:3001/create", {
         title: this.state.newToDo
       })
       .then(response => {
@@ -63,7 +63,7 @@ class App extends React.Component {
   deleteToDo = async index => {
     this.setState({ isLoading: true });
     await axios
-      .post("https://jdommel-to-do-list-server.herokuapp.com/delete", {
+      .post("localhost:3001/delete", {
         id: this.state.tasks[index]._id
       })
       .then(response => {
@@ -191,11 +191,9 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    await axios
-      .get("https://jdommel-to-do-list-server.herokuapp.com/")
-      .then(response => {
-        this.setState({ tasks: response.data, isLoading: false });
-      });
+    await axios.get("localhost:3001/").then(response => {
+      this.setState({ tasks: response.data, isLoading: false });
+    });
   }
 }
 
