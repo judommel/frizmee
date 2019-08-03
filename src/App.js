@@ -117,21 +117,8 @@ class App extends React.Component {
       <div className="container">
         <header>
           <div>
-            <h1>To-Do List</h1>
-          </div>
-          <div className="count">
-            <div>
-              <i className="fas fa-times red-cross" />
-              To do:
-              {!this.state.isLoading && (
-                <span>{this.calculateToDo()}</span>
-              )}{" "}
-            </div>
-            <div>
-              <i className="fas fa-check green-check" />
-              Done :
-              {!this.state.isLoading && <span>{this.calculateDone()}</span>}
-            </div>
+            <h1>Frizmee !!!</h1>
+            <h2>L'appli pour gérer ton frigo</h2>
           </div>
         </header>
 
@@ -139,7 +126,7 @@ class App extends React.Component {
           {/* Loader just for tasks */}
           {this.state.isLoading && <div>Loading tasks...</div>}
           {!this.state.isLoading && <ul>{this.renderToDos()}</ul>}
-          <div>Cliquez sur la tâche pour rayer de la liste</div>
+          <div>Cliquez sur le produit pour rayer de la liste</div>
           <div>
             Appuyer sur la <i className="fas fa-times" /> pour effacer
             définitivement de la liste
@@ -169,7 +156,7 @@ class App extends React.Component {
           />
         </div>
         <AddButton
-          text="Ajouter une tâche"
+          text="Ajouter un produit"
           onClick={() => {
             this.addTaskandNumber();
           }}
@@ -178,7 +165,7 @@ class App extends React.Component {
           <DoInput
             visibility="hidden"
             theme="search-input"
-            placeholder="Cherchez une tâche existante..."
+            placeholder="Chercher un produit existant..."
             onInput={value => {
               this.setState({
                 trySearch: value
@@ -191,9 +178,9 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    await axios.get("localhost:3001/").then(response => {
-      this.setState({ tasks: response.data, isLoading: false });
-    });
+    // await axios.get("localhost:3001/").then(response => {
+    //   this.setState({ tasks: response.data, isLoading: false });
+    // });
   }
 }
 
