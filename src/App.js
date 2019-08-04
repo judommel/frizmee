@@ -19,7 +19,7 @@ class App extends React.Component {
   checkToDo = async index => {
     this.setState({ isLoading: true });
     await axios
-      .post("http://localhost:3001/pin", {
+      .post("https://frizmee-server.herokuapp.com/pin", {
         id: this.state.tasks[index]._id
       })
       .then(response => {
@@ -31,7 +31,7 @@ class App extends React.Component {
     this.setState({ isLoading: true });
 
     await axios
-      .post("http://localhost:3001/update", {
+      .post("https://frizmee-server.herokuapp.com/update", {
         id: this.state.tasks[index]._id
       })
       .then(response => {
@@ -43,7 +43,7 @@ class App extends React.Component {
     this.setState({ isLoading: true });
 
     await axios
-      .post("http://localhost:3001/create", {
+      .post("https://frizmee-server.herokuapp.com/create", {
         title: this.state.newToDo,
         quantity: this.state.quantity !== "" ? this.state.quantity : 1
       })
@@ -62,7 +62,7 @@ class App extends React.Component {
   deleteToDo = async index => {
     this.setState({ isLoading: true });
     await axios
-      .post("http://localhost:3001/delete", {
+      .post("https://frizmee-server.herokuapp.com/delete", {
         id: this.state.tasks[index]._id
       })
       .then(response => {
@@ -206,7 +206,7 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    await axios.get("http://localhost:3001/").then(response => {
+    await axios.get("https://frizmee-server.herokuapp.com/").then(response => {
       this.setState({ tasks: response.data, isLoading: false });
     });
   }
