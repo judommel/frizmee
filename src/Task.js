@@ -1,4 +1,5 @@
 import React from "react";
+import DateDisplay from "./Date";
 
 class Task extends React.Component {
   render() {
@@ -27,14 +28,7 @@ class Task extends React.Component {
             }}
           />
         </span>
-        <span
-          className="date"
-          onClick={e => {
-            this.props.displayDate(e);
-          }}
-        >
-          {this.props.date}
-        </span>
+        <DateDisplay date={this.props.date} />
       </li>
     );
   }

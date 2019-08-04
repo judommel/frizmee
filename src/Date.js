@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Date(props) {
-  <span
-    className="date"
-    onClick={e => {
-      this.props.displayDate(e);
-    }}
-  >
-    {this.props.date}
-  </span>;
+function DateDisplay(props) {
+  const [display, setDisplay] = useState(false);
+
+  return (
+    <span className="date" onClick={() => setDisplay(!display)}>
+      {display ? props.date : <i class="fas fa-calendar-alt" />}
+    </span>
+  );
 }
 
-export default Date;
+export default DateDisplay;

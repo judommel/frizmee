@@ -113,7 +113,7 @@ class App extends React.Component {
     let newArray;
 
     if (this.state.hideUnpinned === false) {
-      newArray = [...unpinned, ...pinned];
+      newArray = [...pinned, ...unpinned];
     } else {
       newArray = [...pinned];
 
@@ -147,9 +147,9 @@ class App extends React.Component {
 
         <div>
           {/* Loader just for tasks */}
-          {this.state.isLoading && (
+          {/* {this.state.isLoading && (
             <div className="list-container">Loading tasks...</div>
-          )}
+          )} */}
           {!this.state.isLoading && <ul>{this.renderToDos()}</ul>}
           <div>Cliquez sur le produit pour l'épingler</div>
           <div>
