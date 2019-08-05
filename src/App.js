@@ -186,7 +186,16 @@ class App extends React.Component {
             this.addTaskandNumber();
           }}
         />
-        <Autocomplete />
+        {/*        {!this.state.isLoading && (
+          <Autocomplete
+            getItemValue={item => item.title}
+            items={this.state.frizList}
+            renderItem={item => <div key={item._id}>{item.title}</div>}
+            value={this.state.newToDo}
+            onChange={e => this.setState({ newToDo: e.target.value })}
+            onSelect={value => this.setState({ newToDo: value })}
+          />
+        )} */}
         <div>
           <DoInput
             visibility="hidden"
@@ -206,7 +215,14 @@ class App extends React.Component {
 
   async componentDidMount() {
     await axios.get("https://frizmee-server.herokuapp.com/").then(response => {
-      this.setState({ tasks: response.data.frizes, frizisLoading: false });
+      this.setState(
+        {
+          tasks: response.data.frizes,
+          frizList: response.data.frizList,
+          isLoading: false
+        },
+        () => console.log(this.state.frizList)
+      );
     });
   }
 }
