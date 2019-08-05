@@ -146,10 +146,6 @@ class App extends React.Component {
         </header>
 
         <div>
-          {/* Loader just for tasks */}
-          {/* {this.state.isLoading && (
-            <div className="list-container">Loading tasks...</div>
-          )} */}
           {!this.state.isLoading && <ul>{this.renderToDos()}</ul>}
           <div>Cliquez sur le produit pour l'épingler</div>
           <div>

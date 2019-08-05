@@ -5,7 +5,7 @@ function DateDisplay(props) {
 
   return (
     <span className="date" onClick={() => setDisplay(!display)}>
-      {display ? props.date : <i class="fas fa-calendar-alt" />}
+      {display ? props.date : <i className="fas fa-calendar-alt" />}
     </span>
   );
 }
