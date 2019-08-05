@@ -183,5 +183,10 @@ li {
 @media all and (max-width: 480px) {
   .do-input {
     width: 300px;
+    font-size: 20px;
+  }
+
+  .search-input {
+    width: 300px;
   }
 }

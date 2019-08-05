@@ -3,12 +3,14 @@ import AddButton from "./AddButton";
 import Task from "./Task";
 import DoInput from "./DoInput";
 import axios from "axios";
+import Autocomplete from "react-autocomplete";
 import { format, compareAsc } from "date-fns";
 
 class App extends React.Component {
   state = {
     isLoading: true,
     tasks: null,
+    frizList: null,
     newToDo: "",
     quantity: "",
     trySearch: "",
@@ -184,6 +186,7 @@ class App extends React.Component {
             this.addTaskandNumber();
           }}
         />
+        <Autocomplete />
         <div>
           <DoInput
             visibility="hidden"
@@ -203,7 +206,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     await axios.get("https://frizmee-server.herokuapp.com/").then(response => {
-      this.setState({ tasks: response.data, isLoading: false });
+      this.setState({ tasks: response.data.frizes, frizisLoading: false });
     });
   }
 }
