@@ -8,8 +8,6 @@ import Autocomplete from "react-autocomplete";
 import { format, compareAsc } from "date-fns";
 import Header from "../components/Header"
 
-import {  BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
-
 class Home extends React.Component {
   state = {
     isLoading: true,
@@ -135,9 +133,8 @@ class Home extends React.Component {
 
   render() {
     return (
+      <><Header tasks={this.state.tasks} page="Home"  />
       <div className="container">
-        <Header tasks={this.state.tasks}  />
-        {/* <Link to="/friztip"><button>Tips?</button></Link> */}
         <div>
           {!this.state.isLoading && <ul>{this.renderToDos()}</ul>}
           <div>Cliquez sur le produit pour l'épingler</div>
@@ -200,7 +197,7 @@ class Home extends React.Component {
             }}
           />
         </div>
-      </div>
+      </div></>
     );
   }
 
