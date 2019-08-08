@@ -1,5 +1,11 @@
 import React from "react"
 import axios from "axios"
+import BootstrapTable from 'react-bootstrap-table-next'
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
+import Header from "../components/Header"
+
+import {  BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
+
 
 class FrizTip extends React.Component {
 
@@ -10,6 +16,8 @@ state = {
 
 async componentDidMount() {
 
+
+    
 let response = await axios.get("/friztips")
 
 this.setState( { liste : response.data, isLoading : false } )
