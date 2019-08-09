@@ -131,18 +131,14 @@ class Home extends React.Component {
     return newArray;
   };
 
-  getAutocompleteStyle = () => {
-    return {
-      width: "800px",
-      height: "45px",
-      fontSize: "30px",
-      borderRadius: "10px",
-      border: "solid 2px #87cefa",
-      padding: "10px"
-    }
+  sortByDate = () => {
+    let sorted = this.state.tasks.sort(compareAsc)
+
+    return sorted
   }
 
   render() {
+
     return (
       <><Header tasks={this.state.tasks} page="Home"  />
       <div 
@@ -168,10 +164,10 @@ class Home extends React.Component {
           />
            {!this.state.isLoading && ( <div>
           <Autocomplete
-          placeholder="Miam, un nouveau plat..."
+          inputProps={ {placeholder:"Miam, un nouveau plat...", paddingLeft : "5px"}}
             getItemValue={item => item.title}
             items={this.state.frizList}
-            renderItem={item => <div key={item._id}>{item.title}</div>}
+            renderItem={(item, isHighlighted) => <div key={item._id} style={{ background: isHighlighted ? 'lightgray' : 'white' }}>{item.title}</div>}
             value={this.state.newToDo}
             onChange={e => this.setState({ newToDo: e.target.value })}
             onSelect={value => this.setState({ newToDo: value })}
@@ -202,7 +198,7 @@ class Home extends React.Component {
           /> */}
         </div>
         <AddButton
-          text="Ajouter un produit"
+          text="Ajouter le produit"
           onClick={() => {
             this.addTaskandNumber();
           }}

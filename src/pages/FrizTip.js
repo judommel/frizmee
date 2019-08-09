@@ -7,7 +7,7 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import filterFactory, { textFilter, selectFilter, dateFilter } from 'react-bootstrap-table2-filter'
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import Header from "../components/Header"
-import DoInput from "../components/DoInput"
+
 
 import {  BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
 
@@ -73,17 +73,31 @@ class FrizTip extends React.Component {
 
     }
 
+    // tipFormatter = (cell, row) => {
+    //   return  <div onClick={() => window.alert(cell) }>{cell}</div>
+    // }
+
     titleFormatter = (cell, row) => {
-    return <><i className="fas fa-trash-alt mini-table-icon" onClick={(e) => this.onDelete(e, row._id)}></i>{" " + cell.toUpperCase()}</>
+    return " " + cell.toUpperCase()
     }
 
-    
+    buttonFormatter = (cell, row) => {
+        return <i className="fas fa-trash-alt mini-table-icon" onClick={(e) => this.onDelete(e, row._id)}></i> 
+    }
 
     renderTable = () => {
 
         console.log(this.state.data)
 
         let columns = [
+        {
+            dataField : "button",
+            text :"",
+            formatter : this.buttonFormatter,
+            headerStyle : () => {
+                return { width : '20px' }
+              }           
+        },    
         {
             dataField : "title",
             text : "Produit",
