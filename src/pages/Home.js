@@ -134,7 +134,9 @@ class Home extends React.Component {
   render() {
     return (
       <><Header tasks={this.state.tasks} page="Home"  />
-      <div className="container">
+      <div 
+      className="container"
+      >
         <div>
           {!this.state.isLoading && <ul>{this.renderToDos()}</ul>}
           <div>Cliquez sur le produit pour l'épingler</div>

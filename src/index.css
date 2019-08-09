@@ -16,7 +16,6 @@ body {
 
 .container {
   margin: auto;
-  width: 1024px;
   background-color: #ffffff;
   text-align: center;
   padding: 0;
@@ -191,8 +190,17 @@ li {
 
 .react-bootstrap-table {
   display : flex;
-  justify-content: center
+  justify-content: center;
 }
+
+tbody > tr > td {
+  border-top : 1px solid #87cefa;
+}
+
+.react-bootstrap-table label {
+ overflow: scroll
+}
+
 
 .friztip-button {
   font-size : 16px;
@@ -217,5 +225,13 @@ li {
 
   .search-input {
     width: 300px;
+  }
+
+  .link-icon {
+    font-size : 40px
+  }
+
+  .react-bootstrap-table table {
+    width : 300px
   }
 }

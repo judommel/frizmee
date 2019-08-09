@@ -36,6 +36,11 @@ class FrizTip extends React.Component {
         
         let author = prompt("Tu es ?")
 
+if (title === null || title === "" ||tip === null || tip === "" || author === null || author === "") {
+    console.log("Attention")
+    return (alert("Saisie incomplète. Merci de recommencer!") )
+}
+
 axios.post("https://frizmee-server.herokuapp.com/friztips/create", {
     title : title,
     tip : tip,
@@ -57,24 +62,26 @@ axios.post("https://frizmee-server.herokuapp.com/friztips/create", {
 
     renderTable = () => {
 
+        console.log(this.state.data)
+
         let columns = [
         {
             dataField : "title",
             text : "Produit",
-            sort : true,
             filter : textFilter({ placeholder : "Produit" })
         },
         {
             dataField : "tip",
             text : "Conseils",
-            sort : true,
-            filter : textFilter({ placeholder : "Conseils" })
+            filter : textFilter({ placeholder : "Conseils"})
         },
         {
             dataField : "author",
             text : "De",
-            sort : true,
-            filter : textFilter({ placeholder : "De" })
+            filter : textFilter({ placeholder : "De"}),
+            headerStyle : () =>  {
+                return {width : "50px"}
+            }
         },
 
 
@@ -84,6 +91,7 @@ axios.post("https://frizmee-server.herokuapp.com/friztips/create", {
             columns={columns}
             data={this.state.data}
             keyField='_id'
+            classes='tips-table-row'
             noDataIndication={ () => "Aucune donnée à afficher" }
             filter={filterFactory()}
         /> )
