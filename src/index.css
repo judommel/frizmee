@@ -89,6 +89,15 @@ span {
   padding: 10px;
 }
 
+input[role="combobox"] {
+  width: 800px;
+  height: 45px;
+  font-size: 30px;
+  border-radius: 10px;
+  border: solid 2px #87cefa;
+  padding: 10px;
+}
+
 .quantity-input {
   width: 100px;
   height: 45px;
@@ -216,13 +225,14 @@ tbody > tr > td {
 /*MEDIA QUERIES */
 
 @media all and (max-width: 800px) {
-  .do-input {
+  .do-input,  input[role="combobox"] {
     width: 600px;
   }
+  
 }
 
 @media all and (max-width: 480px) {
-  .do-input {
+  .do-input,  input[role="combobox"] {
     width: 300px;
     font-size: 20px;
   }

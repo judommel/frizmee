@@ -131,6 +131,17 @@ class Home extends React.Component {
     return newArray;
   };
 
+  getAutocompleteStyle = () => {
+    return {
+      width: "800px",
+      height: "45px",
+      fontSize: "30px",
+      borderRadius: "10px",
+      border: "solid 2px #87cefa",
+      padding: "10px"
+    }
+  }
+
   render() {
     return (
       <><Header tasks={this.state.tasks} page="Home"  />
@@ -155,7 +166,27 @@ class Home extends React.Component {
               this.setState({ hideUnpinned: !this.state.hideUnpinned });
             }}
           />
-          <DoInput
+           {!this.state.isLoading && ( <div>
+          <Autocomplete
+          placeholder="Miam, un nouveau plat..."
+            getItemValue={item => item.title}
+            items={this.state.frizList}
+            renderItem={item => <div key={item._id}>{item.title}</div>}
+            value={this.state.newToDo}
+            onChange={e => this.setState({ newToDo: e.target.value })}
+            onSelect={value => this.setState({ newToDo: value })}
+          />
+          <input
+        value={this.state.quantity}
+        type="text"
+        className="quantity-input"
+        placeholder="Quantité"
+        onChange={e => {
+          this.setState({ quantity: e.target.value });
+        }}
+      /></div>
+        )}
+          {/* <DoInput
             placeholder="Miam, un nouveau plat..."
             theme="do-input"
             quantityTheme="quantity-input"
@@ -168,7 +199,7 @@ class Home extends React.Component {
             onQuantity={value => {
               this.setState({ quantity: value });
             }}
-          />
+          /> */}
         </div>
         <AddButton
           text="Ajouter un produit"
@@ -176,16 +207,7 @@ class Home extends React.Component {
             this.addTaskandNumber();
           }}
         />
-        {/*        {!this.state.isLoading && (
-          <Autocomplete
-            getItemValue={item => item.title}
-            items={this.state.frizList}
-            renderItem={item => <div key={item._id}>{item.title}</div>}
-            value={this.state.newToDo}
-            onChange={e => this.setState({ newToDo: e.target.value })}
-            onSelect={value => this.setState({ newToDo: value })}
-          />
-        )} */}
+              
         <div>
           <DoInput
             visibility="hidden"
