@@ -29,26 +29,6 @@ class FrizTip extends React.Component {
 
     }
 
-    addTip = () => {
-        let title = prompt("Pour quel produit ?")
-        
-        let tip = prompt("Et ton conseil ?")
-        
-        let author = prompt("Tu es ?")
-
-if (title === null || title === "" ||tip === null || tip === "" || author === null || author === "") {
-    console.log("Attention")
-    return (alert("Saisie incomplète. Merci de recommencer!") )
-}
-
-axios.post("https://frizmee-server.herokuapp.com/friztips/create", {
-    title : title,
-    tip : tip,
-    author : author
-}).then(response => this.setState({ data : response.data}))
-
-    }
-
     onChangeTip = (id, tip) => {
 
         let newTip = prompt("Tu peux amender le tip !", tip)
@@ -60,6 +40,45 @@ axios.post("https://frizmee-server.herokuapp.com/friztips/create", {
 
     }
 
+    onDelete = (e, id) => {
+
+        if (window.confirm("Supprimer ce produit de la liste ?")) {
+
+            axios.post("https://frizmee-server.herokuapp.com/friztips/delete", {
+                id : id
+            }).then( response => {
+                this.setState( { data : response.data} )
+            }   )
+        }
+       
+    }
+
+    addTip = () => {
+        let title = prompt("Pour quel produit ?")
+        
+        let tip = prompt("Et ton conseil ?")
+        
+        let author = prompt("Tu es ?")
+
+        if (title === null || title === "" ||tip === null || tip === "" || author === null || author === "") {
+            console.log("Attention")
+            return (alert("Saisie incomplète. Merci de recommencer!") )
+        }
+
+        axios.post("https://frizmee-server.herokuapp.com/friztips/create", {
+            title : title,
+            tip : tip,
+            author : author
+        }).then(response => this.setState({ data : response.data}))
+
+    }
+
+    titleFormatter = (cell, row) => {
+    return <><i className="fas fa-trash-alt mini-table-icon" onClick={(e) => this.onDelete(e, row._id)}></i>{" " + cell.toUpperCase()}</>
+    }
+
+    
+
     renderTable = () => {
 
         console.log(this.state.data)
@@ -68,6 +87,7 @@ axios.post("https://frizmee-server.herokuapp.com/friztips/create", {
         {
             dataField : "title",
             text : "Produit",
+            formatter : this.titleFormatter,
             filter : textFilter({ placeholder : "Produit" })
         },
         {
