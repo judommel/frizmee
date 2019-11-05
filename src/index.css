@@ -1,3 +1,7 @@
+:root {
+  --main-blue: #87cefa;
+}
+
 html {
   margin: 0;
   padding: 0;
@@ -22,7 +26,7 @@ body {
 }
 
 header {
-  background-color: #87cefa;
+  background-color: var(--main-blue);
   color: #ffffff;
   justify-content: space-around;
   margin: auto;
@@ -78,7 +82,7 @@ span {
 }
 
 .green-check {
-  color: #87cefa;
+  color: var(--main-blue);
   padding-right: 5px;
 }
 
@@ -87,7 +91,7 @@ span {
   height: 45px;
   font-size: 30px;
   border-radius: 10px;
-  border: solid 2px #87cefa;
+  border: solid 2px var(--main-blue);
   padding: 10px;
 }
 
@@ -96,7 +100,7 @@ input[role="combobox"] {
   height: 45px;
   font-size: 30px;
   border-radius: 10px;
-  border: solid 2px #87cefa;
+  border: solid 2px var(--main-blue);
   padding: 10px;
 }
 
@@ -106,7 +110,7 @@ input[role="combobox"] {
   font-size: 20px;
   text-align: center;
   border-radius: 10px;
-  border: solid 2px #87cefa;
+  border: solid 2px var(--main-blue);
   padding: 10px;
   margin-left: 20px;
 }
@@ -116,7 +120,7 @@ input[role="combobox"] {
   height: 35px;
   font-size: 20px;
   border-radius: 8px;
-  border: solid 2px #87cefa;
+  border: solid 2px var(--main-blue);
   padding: 10px;
   margin: 20px;
 }
@@ -134,7 +138,7 @@ select {
 button {
   font-size: 25px;
   height: 35px;
-  background-color: #87cefa;
+  background-color: var(--main-blue);
   border-radius: 15px;
   margin: 10px 10px;
   color: #ffffff;
@@ -185,6 +189,10 @@ button:hover {
   top: 30px;
 }
 
+.fa-times {
+  color: var(--main-blue);
+}
+
 /* if transitions wanted
 @keyframes transition {
   0% {
@@ -213,7 +221,7 @@ li {
 }
 
 tbody > tr > td {
-  border-top: 1px solid #87cefa;
+  border-top: 1px solid var(--main-blue);
   text-overflow: ellipsis;
 }
 
@@ -230,6 +238,10 @@ tbody > tr > td {
 
 .mini-table-icon {
   font-size: 12px;
+}
+
+.text-filter {
+  width: 80% !important;
 }
 
 /*MEDIA QUERIES */
