@@ -1,4 +1,3 @@
-
 import React from "react";
 import AddButton from "../components/AddButton";
 import Task from "../components/Task";
@@ -6,7 +5,7 @@ import DoInput from "../components/DoInput";
 import axios from "axios";
 import Autocomplete from "react-autocomplete";
 import { format, compareAsc } from "date-fns";
-import Header from "../components/Header"
+import Header from "../components/Header";
 
 class Home extends React.Component {
   state = {
@@ -98,7 +97,7 @@ class Home extends React.Component {
             key={this.state.tasks[i]._id}
             theme={this.state.tasks[i].pinned ? "pinned" : "unpinned"}
             text={this.state.tasks[i].title}
-            date={format(this.state.tasks[i].date, "Congelé le DD/MM/YY")}
+            date={format(this.state.tasks[i].date, "DD/MM/YY")}
             delete={e => {
               this.deleteToDo(i);
             }}
@@ -122,9 +121,9 @@ class Home extends React.Component {
       newArray = [...pinned];
 
       if (pinned.length === 0) {
-        newArray = [<div className="empty-list">Rien de spécial dans le congélo :(</div>  ]
-          
-        
+        newArray = [
+          <div className="empty-list">Rien de spécial dans le congélo :(</div>
+        ];
       }
     }
 
@@ -132,57 +131,69 @@ class Home extends React.Component {
   };
 
   sortByDate = () => {
-    let sorted = this.state.tasks.sort(compareAsc)
+    let sorted = this.state.tasks.sort(compareAsc);
 
-    return sorted
-  }
+    return sorted;
+  };
 
   render() {
-
     return (
-      <><Header tasks={this.state.tasks} page="Home"  />
-      <div 
-      className="container"
-      >
-        <div>
-          {!this.state.isLoading && <ul>{this.renderToDos()}</ul>}
-          <div>Cliquez sur le produit pour l'épingler</div>
+      <>
+        <Header tasks={this.state.tasks} page="Home" />
+        <div className="container">
           <div>
-            Appuyer sur la <i className="fas fa-times" /> pour effacer
-            définitivement de la liste
-          </div>
-          <AddButton
-            className="hide-done"
-            text={
-              this.state.hideUnpinned
-                ? "Afficher tout le congélo"
-                : "Afficher la sélection"
-            }
-            onClick={() => {
-              this.setState({ hideUnpinned: !this.state.hideUnpinned });
-            }}
-          />
-           {!this.state.isLoading && ( <div>
-          <Autocomplete
-          inputProps={ {placeholder:"Miam, un nouveau plat...", paddingLeft : "5px"}}
-            getItemValue={item => item.title}
-            items={this.state.frizList}
-            renderItem={(item, isHighlighted) => <div key={item._id} style={{ background: isHighlighted ? 'lightgray' : 'white' }}>{item.title}</div>}
-            value={this.state.newToDo}
-            onChange={e => this.setState({ newToDo: e.target.value })}
-            onSelect={value => this.setState({ newToDo: value })}
-          />
-          <input
-        value={this.state.quantity}
-        type="text"
-        className="quantity-input"
-        placeholder="Quantité"
-        onChange={e => {
-          this.setState({ quantity: e.target.value });
-        }}
-      /></div>
-        )}
-          {/* <DoInput
+            {!this.state.isLoading && <ul>{this.renderToDos()}</ul>}
+            <div>Cliquez sur le produit pour l'épingler</div>
+            <div>
+              Appuyer sur la <i className="fas fa-times" /> pour effacer
+              définitivement de la liste
+            </div>
+            <AddButton
+              className="hide-done"
+              text={
+                this.state.hideUnpinned
+                  ? "Afficher tout le congélo"
+                  : "Afficher la sélection"
+              }
+              onClick={() => {
+                this.setState({ hideUnpinned: !this.state.hideUnpinned });
+              }}
+            />
+            {!this.state.isLoading && (
+              <div>
+                <Autocomplete
+                  inputProps={{
+                    placeholder: "Miam, un nouveau plat...",
+                    paddingLeft: "5px"
+                  }}
+                  getItemValue={item => item.title}
+                  items={this.state.frizList}
+                  renderItem={(item, isHighlighted) => (
+                    <div
+                      key={item._id}
+                      style={{
+                        background: isHighlighted ? "lightgray" : "white"
+                      }}
+                    >
+                      {item.title}
+                    </div>
+                  )}
+                  value={this.state.newToDo}
+                  onChange={e => this.setState({ newToDo: e.target.value })}
+                  onSelect={value => this.setState({ newToDo: value })}
+                />
+                <input
+                  value={this.state.quantity}
+                  type="text"
+                  className="quantity-input"
+                  placeholder="Quantité"
+                  onChange={e => {
+                    this.setState({ quantity: e.target.value });
+                  }}
+                />
+              </div>
+            )}
+            {/* <DoInput
             placeholder="Miam, un nouveau plat..."
             theme="do-input"
             quantityTheme="quantity-input"
@@ -196,28 +207,29 @@ class Home extends React.Component {
               this.setState({ quantity: value });
             }}
           /> */}
-        </div>
-        <AddButton
-          text="Ajouter le produit"
-          onClick={() => {
-            this.addTaskandNumber();
-          }}
-        />
-              
-        <div>
-          <DoInput
-            visibility="hidden"
-            theme="search-input"
-            quantityTheme="hidden"
-            placeholder="Chercher un produit existant..."
-            onInput={value => {
-              this.setState({
-                trySearch: value
-              });
+          </div>
+          <AddButton
+            text="Ajouter le produit"
+            onClick={() => {
+              this.addTaskandNumber();
             }}
           />
+
+          <div>
+            <DoInput
+              visibility="hidden"
+              theme="search-input"
+              quantityTheme="hidden"
+              placeholder="Chercher un produit existant..."
+              onInput={value => {
+                this.setState({
+                  trySearch: value
+                });
+              }}
+            />
+          </div>
         </div>
-      </div></>
+      </>
     );
   }
 

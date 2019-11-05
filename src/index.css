@@ -4,7 +4,7 @@ html {
 }
 
 #root {
-  padding : 0
+  padding: 0;
 }
 
 body {
@@ -26,26 +26,28 @@ header {
   color: #ffffff;
   justify-content: space-around;
   margin: auto;
-  padding-top : 15px;
-  padding-bottom : 15px;
-  text-align : center
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
 }
 
 ul {
   list-style: none;
+  margin: auto;
+  width: 70%;
 }
 
 div {
-  padding: 10px 0px;
+  padding: 5px 0px;
 }
 
 li {
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 25px;
+  line-height: 30px;
 }
 
 span {
-  margin: 20px;
+  margin: 10px;
 }
 
 .hidden {
@@ -159,8 +161,17 @@ button:hover {
   font-size: 12px;
 }
 
+/* TASK */
+
 .click-icon {
   cursor: pointer;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.tasks-icon {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .date {
@@ -168,12 +179,11 @@ button:hover {
 }
 
 .link-icon {
-  color : #ffffff;
-  position : absolute;
-  right : 40px;
-  top : 30px
+  color: #ffffff;
+  position: absolute;
+  right: 40px;
+  top: 30px;
 }
-
 
 /* if transitions wanted
 @keyframes transition {
@@ -198,42 +208,42 @@ li {
 /* FRIZTIP*/
 
 .react-bootstrap-table {
-  display : flex;
+  display: flex;
   justify-content: center;
 }
 
 tbody > tr > td {
-  border-top : 1px solid #87cefa;
-  text-overflow: ellipsis
+  border-top: 1px solid #87cefa;
+  text-overflow: ellipsis;
 }
 
 .react-bootstrap-table label {
- overflow: hidden
+  overflow: hidden;
 }
 
-
 .friztip-button {
-  font-size : 16px;
+  font-size: 16px;
   font-weight: 700;
   width: 200px;
-  border : none
+  border: none;
 }
 
 .mini-table-icon {
-  font-size : 12px
+  font-size: 12px;
 }
 
 /*MEDIA QUERIES */
 
 @media all and (max-width: 800px) {
-  .do-input,  input[role="combobox"] {
+  .do-input,
+  input[role="combobox"] {
     width: 600px;
   }
-  
 }
 
 @media all and (max-width: 480px) {
-  .do-input,  input[role="combobox"] {
+  .do-input,
+  input[role="combobox"] {
     width: 300px;
     font-size: 20px;
   }
@@ -243,10 +253,18 @@ tbody > tr > td {
   }
 
   .link-icon {
-    font-size : 40px
+    font-size: 40px;
   }
 
   .react-bootstrap-table table {
-    width : 300px
+    width: 300px;
+  }
+
+  .quantity-input {
+    margin-left: 0px;
+  }
+
+  ul {
+    width: 90%;
   }
 }
