@@ -149,7 +149,15 @@ button:hover {
 }
 
 .pinned {
-  color: yellow;
+  background-color: var(--main-blue);
+  color: #fff;
+  background-image: linear-gradient(
+    to right,
+    #175f8b 0%,
+    var(--main-blue) 100%
+  );
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .pinned:hover,
@@ -241,7 +249,7 @@ tbody > tr > td {
 }
 
 .text-filter {
-  width: 80% !important;
+  width: 70% !important;
 }
 
 /*MEDIA QUERIES */

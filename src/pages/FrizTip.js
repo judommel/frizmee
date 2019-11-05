@@ -129,7 +129,6 @@ class FrizTip extends React.Component {
         columns={columns}
         data={this.state.data}
         keyField="_id"
-        classes="tips-table-row"
         noDataIndication={() => "Aucune donnée à afficher"}
         filter={filterFactory()}
       />
