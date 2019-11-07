@@ -4,7 +4,7 @@ import Task from "../components/Task";
 import DoInput from "../components/DoInput";
 import axios from "axios";
 import Autocomplete from "react-autocomplete";
-import { format, compareAsc } from "date-fns";
+import { format } from "date-fns";
 import Header from "../components/Header";
 
 class Home extends React.Component {
@@ -80,11 +80,15 @@ class Home extends React.Component {
   renderToDos = () => {
     let taskArray = [];
 
-    for (let i = 0; i < this.state.tasks.length; i++) {
+    let sortedTasks = this.state.tasks.sort((a, b) => {
+      return new Date(a.date) - new Date(b.date);
+    });
+
+    for (let i = 0; i < sortedTasks.length; i++) {
       if (
         this.state.trySearch.length === 0 ||
         (this.state.trySearch.length > 0 &&
-          this.state.tasks[i].title
+          sortedTasks[i].title
             .toLowerCase()
             .includes(this.state.trySearch.toLowerCase()))
       ) {
@@ -93,11 +97,11 @@ class Home extends React.Component {
             check={() => {
               this.checkToDo(i);
             }}
-            quantity={this.state.tasks[i].quantity}
-            key={this.state.tasks[i]._id}
-            theme={this.state.tasks[i].pinned ? "pinned" : "unpinned"}
-            text={this.state.tasks[i].title}
-            date={format(this.state.tasks[i].date, "DD/MM/YY")}
+            quantity={sortedTasks[i].quantity}
+            key={sortedTasks[i]._id}
+            theme={sortedTasks[i].pinned ? "pinned" : "unpinned"}
+            text={sortedTasks[i].title}
+            date={format(sortedTasks[i].date, "DD/MM/YY")}
             delete={e => {
               this.deleteToDo(i);
             }}
@@ -130,12 +134,6 @@ class Home extends React.Component {
     return newArray;
   };
 
-  sortByDate = () => {
-    let sorted = this.state.tasks.sort(compareAsc);
-
-    return sorted;
-  };
-
   render() {
     return (
       <>
@@ -164,7 +162,7 @@ class Home extends React.Component {
                 <Autocomplete
                   inputProps={{
                     placeholder: "Miam, un nouveau plat...",
-                    paddingLeft: "5px"
+                    paddingleft: "5px"
                   }}
                   getItemValue={item => item.title}
                   items={this.state.frizList}
@@ -214,7 +212,6 @@ class Home extends React.Component {
               this.addTaskandNumber();
             }}
           />
-
           <div>
             <DoInput
               visibility="hidden"
@@ -235,14 +232,11 @@ class Home extends React.Component {
 
   async componentDidMount() {
     await axios.get("https://frizmee-server.herokuapp.com/").then(response => {
-      this.setState(
-        {
-          tasks: response.data.frizes,
-          frizList: response.data.frizList,
-          isLoading: false
-        },
-        () => console.log(this.state.frizList)
-      );
+      this.setState({
+        tasks: response.data.frizes,
+        frizList: response.data.frizList,
+        isLoading: false
+      });
     });
   }
 }

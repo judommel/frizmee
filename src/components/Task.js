@@ -25,7 +25,9 @@ class Task extends React.Component {
           <span className="quantity tasks-icon">{this.props.quantity}</span>
           <span className="tasks-icon">
             <span
-              className="lick-icon"
+              role="img"
+              aria-label="eat"
+              aria-labelledby="eat"
               onClick={i => {
                 this.props.eat(i);
               }}
