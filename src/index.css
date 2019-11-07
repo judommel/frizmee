@@ -25,6 +25,8 @@ body {
   padding: 0;
 }
 
+/* HEADER */
+
 header {
   background-color: var(--main-blue);
   color: #ffffff;
@@ -34,6 +36,15 @@ header {
   padding-bottom: 15px;
   text-align: center;
   border-radius: 0px 0px 15px 15px;
+}
+
+.frizmee-logo {
+  height: 150px;
+  width: 150px;
+}
+
+h3 {
+  margin: 0px;
 }
 
 ul {
