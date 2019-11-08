@@ -148,8 +148,9 @@ select {
 }
 
 button {
-  font-size: 25px;
-  height: 35px;
+  font-size: 22px;
+  font-family: "Monda", sans-serif;
+  height: 38px;
   background-color: var(--main-blue);
   border-radius: 15px;
   margin: 10px 10px;
