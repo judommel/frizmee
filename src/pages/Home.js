@@ -165,7 +165,9 @@ class Home extends React.Component {
                     paddingleft: "5px"
                   }}
                   getItemValue={item => item.title}
-                  items={this.state.frizList}
+                  items={this.state.frizList.filter(elt =>
+                    elt.title.includes(this.state.newToDo)
+                  )}
                   renderItem={(item, isHighlighted) => (
                     <div
                       key={item._id}
