@@ -166,7 +166,9 @@ class Home extends React.Component {
                   }}
                   getItemValue={item => item.title}
                   items={this.state.frizList.filter(elt =>
-                    elt.title.includes(this.state.newToDo)
+                    elt.title
+                      .toLowerCase()
+                      .includes(this.state.newToDo.toLocaleLowerCase())
                   )}
                   renderItem={(item, isHighlighted) => (
                     <div
