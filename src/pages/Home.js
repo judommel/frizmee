@@ -140,61 +140,64 @@ class Home extends React.Component {
         <Header tasks={this.state.tasks} page="Home" />
         <div className="container">
           <div>
-            {!this.state.isLoading && <ul>{this.renderToDos()}</ul>}
-            <div>Cliquez sur le produit pour l'épingler</div>
-            <div>
-              Appuyer sur la <i className="fas fa-times" /> pour effacer
-              définitivement de la liste
-            </div>
-            <AddButton
-              className="hide-done"
-              text={
-                this.state.hideUnpinned
-                  ? "Afficher tout le congélo"
-                  : "Afficher la sélection"
-              }
-              onClick={() => {
-                this.setState({ hideUnpinned: !this.state.hideUnpinned });
-              }}
-            />
             {!this.state.isLoading && (
-              <div>
-                <Autocomplete
-                  inputProps={{
-                    placeholder: "Miam, un nouveau plat...",
-                    paddingleft: "5px"
-                  }}
-                  getItemValue={item => item.title}
-                  items={this.state.frizList.filter(elt =>
-                    elt.title
-                      .toLowerCase()
-                      .includes(this.state.newToDo.toLocaleLowerCase())
-                  )}
-                  renderItem={(item, isHighlighted) => (
-                    <div
-                      key={item._id}
-                      style={{
-                        background: isHighlighted ? "lightgray" : "white"
-                      }}
-                    >
-                      {item.title}
-                    </div>
-                  )}
-                  value={this.state.newToDo}
-                  onChange={e => this.setState({ newToDo: e.target.value })}
-                  onSelect={value => this.setState({ newToDo: value })}
-                />
-                <input
-                  value={this.state.quantity}
-                  type="text"
-                  className="quantity-input"
-                  placeholder="Quantité"
-                  onChange={e => {
-                    this.setState({ quantity: e.target.value });
+              <>
+                <ul>{this.renderToDos()}</ul>
+                <div>Cliquez sur le produit pour l'épingler</div>
+                <div>
+                  Appuyer sur la <i className="fas fa-times" /> pour effacer
+                  définitivement de la liste
+                </div>
+                <AddButton
+                  className="hide-done"
+                  text={
+                    this.state.hideUnpinned
+                      ? "Afficher tout le congélo"
+                      : "Afficher la sélection"
+                  }
+                  onClick={() => {
+                    this.setState({ hideUnpinned: !this.state.hideUnpinned });
                   }}
                 />
-              </div>
+                <div>
+                  <Autocomplete
+                    inputProps={{
+                      placeholder: "Miam, un nouveau plat...",
+                      paddingleft: "5px"
+                    }}
+                    getItemValue={item => item.title}
+                    items={this.state.frizList.filter(elt =>
+                      elt.title
+                        .toLowerCase()
+                        .includes(this.state.newToDo.toLocaleLowerCase())
+                    )}
+                    renderItem={(item, isHighlighted) => (
+                      <div
+                        key={item._id}
+                        style={{
+                          background: isHighlighted ? "lightgray" : "white"
+                        }}
+                      >
+                        {item.title}
+                      </div>
+                    )}
+                    value={this.state.newToDo}
+                    onChange={e => this.setState({ newToDo: e.target.value })}
+                    onSelect={value => this.setState({ newToDo: value })}
+                  />
+                  <input
+                    value={this.state.quantity}
+                    type="text"
+                    className="quantity-input"
+                    placeholder="Quantité"
+                    onChange={e => {
+                      this.setState({ quantity: e.target.value });
+                    }}
+                  />
+                </div>
+              </>
             )}
+            {/* Input sans Autocomplete /* }
             {/* <DoInput
             placeholder="Miam, un nouveau plat..."
             theme="do-input"
@@ -210,25 +213,30 @@ class Home extends React.Component {
             }}
           /> */}
           </div>
-          <AddButton
-            text="Ajouter le produit"
-            onClick={() => {
-              this.addTaskandNumber();
-            }}
-          />
-          <div>
-            <DoInput
-              visibility="hidden"
-              theme="search-input"
-              quantityTheme="hidden"
-              placeholder="Chercher un produit existant..."
-              onInput={value => {
-                this.setState({
-                  trySearch: value
-                });
-              }}
-            />
-          </div>
+          {!this.state.isLoading && (
+            <>
+              <AddButton
+                text="Ajouter le produit"
+                onClick={() => {
+                  this.addTaskandNumber();
+                }}
+              />
+              <div>
+                <DoInput
+                  visibility="hidden"
+                  theme="search-input"
+                  quantityTheme="hidden"
+                  placeholder="Chercher un produit existant..."
+                  onInput={value => {
+                    this.setState({
+                      trySearch: value
+                    });
+                  }}
+                />
+              </div>{" "}
+            </>
+          )}
+          {this.state.isLoading && <div className="loader">Wait for it...</div>}
         </div>
       </>
     );

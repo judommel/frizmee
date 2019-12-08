@@ -25,6 +25,12 @@ body {
   padding: 0;
 }
 
+/* LOADER */
+
+.loader {
+  font-size: 34px;
+}
+
 /* HEADER */
 
 header {
