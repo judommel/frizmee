@@ -225,6 +225,7 @@ class Home extends React.Component {
                 <DoInput
                   visibility="hidden"
                   theme="search-input"
+                  value={this.state.trySearch}
                   quantityTheme="hidden"
                   placeholder="Chercher un produit existant..."
                   onInput={value => {

@@ -28,6 +28,7 @@ class Task extends React.Component {
               role="img"
               aria-label="eat"
               aria-labelledby="eat"
+              className="click-icon"
               onClick={i => {
                 this.props.eat(i);
               }}

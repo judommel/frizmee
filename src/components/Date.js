@@ -4,7 +4,7 @@ function DateDisplay(props) {
   const [display, setDisplay] = useState(false);
 
   return (
-    <span className="date" onClick={() => setDisplay(!display)}>
+    <span className="date click-icon" onClick={() => setDisplay(!display)}>
       {display ? props.date : "❄️"}
     </span>
   );
